@@ -32,15 +32,16 @@ class OnBoardPagingFragment : Fragment() {
      when(requireArguments().getInt(ARG_ONBOARD_POSITION)){
          0->{
              txtOn.text="Очень удобный функционал"
+             lottie.setAnimation(R.raw.animl1)
 
          }
          1->{
              txtOn.text="Быстрый ,качественный продукт "
-
+             lottie.setAnimation(R.raw.animl2)
          }
          2->{
              txtOn.text="Куча функций и интересных фишек  "
-
+             lottie.setAnimation(R.raw.animl3)
          }
       }
     }

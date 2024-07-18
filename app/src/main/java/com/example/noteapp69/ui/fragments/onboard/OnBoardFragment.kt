@@ -10,7 +10,7 @@ import com.example.noteapp69.R
 import com.example.noteapp69.databinding.FragmentOnBoardBinding
 import com.example.noteapp69.databinding.FragmentOnBoardPagingBinding
 import com.example.noteapp69.ui.adapters.OnBoardViewPagerAdapter
-
+import androidx.activity.OnBackPressedCallback
 
 class OnBoardFragment : Fragment() {
 
@@ -30,9 +30,20 @@ class OnBoardFragment : Fragment() {
         setupListeners()
     }
 
-    private fun initialize() {
-        binding.viewPager2.adapter=OnBoardViewPagerAdapter(this)
-    }
+//    private fun initialize() {
+//        binding.viewPager2.adapter=OnBoardViewPagerAdapter(this)
+//    }
+private fun initialize() {
+    binding.viewPager2.adapter=OnBoardViewPagerAdapter(this@OnBoardFragment)
+    binding.dotsIndicator.attachTo(binding.viewPager2)
+    requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,object:
+        OnBackPressedCallback(true){
+        override fun handleOnBackPressed() {
+            requireActivity().finish()
+        }
+
+    })
+}
 
     private fun setupListeners()=with(binding.viewPager2) {
     registerOnPageChangeCallback(object :ViewPager2.OnPageChangeCallback(){
@@ -40,8 +51,10 @@ class OnBoardFragment : Fragment() {
             super.onPageSelected(position)
             if(position==2){
              binding.txtSkip.visibility=View.INVISIBLE
+                binding.txtStart.visibility=View.VISIBLE//текст виден на 1 пайджерах
             }else {
                 binding.txtSkip.visibility=View.VISIBLE
+                binding.txtStart.visibility=View.INVISIBLE//текст невиден на 2 пайджерах
             }
         }
     })
@@ -51,4 +64,5 @@ class OnBoardFragment : Fragment() {
            }
         }
     }
+
 }
