@@ -32,7 +32,7 @@ class OnBoardFragment : Fragment() {
 
 //    private fun initialize() {
 //        binding.viewPager2.adapter=OnBoardViewPagerAdapter(this)
-//    }
+//    }  //вью пейджнр без дотс индикатора
 private fun initialize() {
     binding.viewPager2.adapter=OnBoardViewPagerAdapter(this@OnBoardFragment)
     binding.dotsIndicator.attachTo(binding.viewPager2)
