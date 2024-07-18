@@ -41,18 +41,8 @@ class NoteFragment : Fragment() {
         }
         txtText.text=preferenceHelper.text
         btnGo.setOnClickListener{
-            findNavController().navigate(R.id.action_noteFragment_to_noteDetailFragment,null,
-//                navOptions {
-//                    anim{
-//                 enter=R.anim.slide_in_right
-//                 exit=R.anim.slide_out_left
-//                }
-//
-//                }
-            )
+            findNavController().navigate(R.id.action_noteFragment_to_noteDetailFragment)
 
         }
-
-
     }
 }
