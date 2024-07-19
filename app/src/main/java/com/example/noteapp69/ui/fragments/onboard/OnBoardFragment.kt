@@ -11,6 +11,8 @@ import com.example.noteapp69.databinding.FragmentOnBoardBinding
 import com.example.noteapp69.databinding.FragmentOnBoardPagingBinding
 import com.example.noteapp69.ui.adapters.OnBoardViewPagerAdapter
 import androidx.activity.OnBackPressedCallback
+import androidx.navigation.fragment.findNavController
+import com.example.noteapp69.utils.PreferenceHelper
 
 class OnBoardFragment : Fragment() {
 
@@ -28,9 +30,12 @@ class OnBoardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initialize()
         setupListeners()
+        setupListeners2() //222
     }
 
-//    private fun initialize() {
+
+
+    //    private fun initialize() {
 //        binding.viewPager2.adapter=OnBoardViewPagerAdapter(this)
 //    }  //вью пейджнр без дотс индикатора
 private fun initialize() {
@@ -63,6 +68,19 @@ private fun initialize() {
                setCurrentItem(currentItem+2,true)
            }
         }
+
     }
+    private fun setupListeners2()=with(binding) {
+        val preferenceHelper=PreferenceHelper()
+        preferenceHelper.unit(requireContext())
+        txtStart.setOnClickListener{
+            findNavController().navigate(R.id.action_onBoardFragment_to_noteFragment)
+            preferenceHelper.isOnBoardShown=true
+        }
+        if(preferenceHelper.isOnBoardShown==true){
+            findNavController().navigate(R.id.action_onBoardFragment_to_noteFragment)
+        }
+    }
+
 
 }
