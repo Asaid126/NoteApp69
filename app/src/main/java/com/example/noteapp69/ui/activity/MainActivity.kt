@@ -23,13 +23,8 @@ private lateinit var navController: NavController
         super.onCreate(savedInstanceState)
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
     }
-
-
-//    var l=PreferenceHelper().isOnBoardShown
-//    if(l==true){
-//        findNavController().nav
-//    } //не сработало
 
 
 }
